@@ -57,7 +57,7 @@
 (defun noxrcp-robe--jump ()
   (interactive)
   (if (not current-prefix-arg)
-      (call-interactively 'noxrcp-dumb-jump---go)
+      (call-interactively 'init-dumb-jump--go)
     (let ((current-prefix-arg 'nil))
       (cond
        ((equal current-prefix-arg 4)

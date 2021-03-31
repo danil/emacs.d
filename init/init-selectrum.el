@@ -34,10 +34,9 @@
 (defun init-selectrum-recentf ()
   "Use `completing-read' to open a recent file."
   (interactive)
-  (let ((selectrum-should-sort-p nil))
-    ;; (let ((files (mapcar 'abbreviate-file-name recentf-list)))
-    ;;   (find-file (completing-read "Recentf: " files nil t)))
-    (find-file (completing-read "Recentf: " recentf-list nil t))))
+  ;; (let ((files (mapcar 'abbreviate-file-name recentf-list)))
+  ;;   (find-file (completing-read "Recentf: " files nil t)))
+  (find-file (completing-read "Recentf: " recentf-list nil t)))
 
 ;; Yank kill ring
 ;; <https://github.com/raxod502/selectrum/wiki/Useful-Commands#my-yank-pop>,
@@ -55,8 +54,7 @@ This is like `yank-pop'.  The differences are:
 - This doesn't delete the text just pasted if the previous
   command is `yank'."
   (interactive "P")
-  (let* ((selectrum-should-sort-p nil)
-         (text nil))
+  (let* ((text nil))
     (setq text
           (completing-read "Yank: "
                            (cl-remove-duplicates
@@ -77,15 +75,12 @@ This is like `yank-pop'.  The differences are:
   "Complete using `company-candidates'."
   (interactive)
 
-  (let* ((selectrum-should-sort-p nil)
-         (text nil)
+  (let* ((text nil)
          (initial-input (init-company-grab-symbol)))
 
     (unless company-candidates (company-complete))
     (when (and company-candidates company-point)
-      (setq text
-            (selectrum-read "Candidates: " company-candidates
-                            :initial-input initial-input))
+      (setq text (completing-read "Candidates: " company-candidates))
       (init-selectrum-completion-in-region-action text))))
 
 (defun init-selectrum-completion-in-region-action (str)
@@ -120,8 +115,7 @@ The previous string is between `completion-beg' and `completion-end'."
 
 (defun init-selectrum-completing-read (&optional arg)
   (interactive "P")
-  (let* ((selectrum-should-sort-p nil)
-         (text nil))
+  (let* ((text nil))
     (setq text
           (completing-read "Yank: "
                            (cl-remove-duplicates
@@ -139,8 +133,7 @@ The previous string is between `completion-beg' and `completion-end'."
                      (set-marker (mark-marker) (point) (current-buffer)))))))
 
 (defun init-selectrum-unsorted-read (prompt choices)
-  (let ((selectrum-should-sort-p nil))
-    (completing-read prompt choices)))
+  (completing-read prompt choices))
 
 ;; Handle completion order for refs in magit with prescient
 ;; https://github.com/raxod502/selectrum/wiki/Additional-Configuration#handle-completion-order-for-refs-in-magit-with-prescient
@@ -148,8 +141,6 @@ The previous string is between `completion-beg' and `completion-end'."
                                         prescient-sort)
   "Apply prescient sorting when listing refs."
   (let ((res (funcall orig namespaces format sortby)))
-    (if (or sortby magit-list-refs-sortby (not selectrum-should-sort-p))
-        res
-      (prescient-sort res))))
+    (if sortby res (prescient-sort res))))
 
 (provide 'init-selectrum)

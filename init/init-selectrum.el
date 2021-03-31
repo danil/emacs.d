@@ -80,7 +80,7 @@ This is like `yank-pop'.  The differences are:
 
     (unless company-candidates (company-complete))
     (when (and company-candidates company-point)
-      (setq text (completing-read "Candidates: " company-candidates))
+      (setq text (completing-read "Candidates: " company-candidates nil nil initial-input))
       (init-selectrum-completion-in-region-action text))))
 
 (defun init-selectrum-completion-in-region-action (str)

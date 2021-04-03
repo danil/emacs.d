@@ -276,7 +276,8 @@
  '(init-ferm-mode-rainbow-identifiers-stop-words '("ACCEPT" "DROP" "FORWARD" "INPUT" "OUTPUT" "REJECT")) ;; init-ferm-mode.el
  '(init-files-map-prefix init-key-prefix) ;; init-files.el
  '(init-fill-map-prefix init-key-prefix) ;; init-fill.el
- '(init-find-temp-file-mode-bindings '(("C-v x t t" . find-temp-file))) ;; init-find-temp-file-mode.el
+ '(init-find-temp-file-mode-bindings '(("C-v x t" . find-temp-file))) ;; init-find-temp-file-mode.el
+ '(init-find-temp-file-mode-extension-functions '(("go" . init-find-temp-file-go-extension-function))) ;; init-find-temp-file-mode.el
  '(init-fringe-mode-map-exec-prefix init-exec-key-prefix) ;; init-fringe.el
  '(init-fundamental-mode-patterns '("/\\.bash_history\\'")) ;; init-simple.el
  '(init-go-mode-bindings '(("C-c C-f e" . init-go-mode-end-of-defun) ("C-c C-k" . xref-pop-marker-stack) ("M-." . godef-jump) ("C-v ? ? f" . godoc-at-point))) ;; init-go-mode.el

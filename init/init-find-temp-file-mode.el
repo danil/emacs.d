@@ -40,7 +40,7 @@ See `init-find-temp-file-mode-bindings'.")
     (let ((key (car b)) (cmd (cdr b)) (map init-find-temp-file-mode-map))
       (define-key map (kbd key) cmd))))
 
-(defun init-find-temp-file-go-extension-function (file-path)
+(defun init-find-temp-file-go-extension (file-path)
   (let* ((directory-path (file-name-directory file-path))
          (module-name (file-name-base (directory-file-name directory-path)))
          (go-mod-text (format "module %s\n" module-name))

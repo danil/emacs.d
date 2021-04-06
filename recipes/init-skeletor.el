@@ -39,7 +39,7 @@
 (defun noxrcp-skeletor ()
   "No X recipe init."
 
-  (define-key noxrcp-exec-map (kbd "t p") 'skeletor-create-project-at)
+  ;; (define-key noxrcp-exec-map (kbd "t p") 'skeletor-create-project-at)
 
   (skeletor-define-template "go-module"
     :title "Go Module"

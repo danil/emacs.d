@@ -34,9 +34,8 @@
 (defun init-selectrum-recentf ()
   "Use `completing-read' to open a recent file."
   (interactive)
-  ;; (let ((files (mapcar 'abbreviate-file-name recentf-list)))
-  ;;   (find-file (completing-read "Recentf: " files nil t)))
-  (find-file (completing-read "Recentf: " recentf-list nil t)))
+  (let ((selectrum-should-sort nil))
+    (find-file (completing-read "Recentf: " recentf-list nil t))))
 
 ;; Yank kill ring
 ;; <https://github.com/raxod502/selectrum/wiki/Useful-Commands#my-yank-pop>,
@@ -54,7 +53,8 @@ This is like `yank-pop'.  The differences are:
 - This doesn't delete the text just pasted if the previous
   command is `yank'."
   (interactive "P")
-  (let* ((text nil))
+  (let ((selectrum-should-sort nil)
+        (text nil))
     (setq text
           (completing-read "Yank: "
                            (cl-remove-duplicates

@@ -1,8 +1,13 @@
 (defun init-dumb-jump ()
-  (dumb-jump-mode +1)
+  (if (boundp 'xref-backend-functions) (init-dumb-jump--init)
+    (with-eval-after-load 'xref (init-dumb-jump--init)))
 
   (if (boundp 'dumb-jump-mode-map) (init-dumb-jump--setup)
     (with-eval-after-load 'dumb-jump (init-dumb-jump--setup))))
+
+(defun init-dumb-jump--init ()
+  ;; (dumb-jump-mode +1)
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (defun init-dumb-jump--setup ()
   (define-key dumb-jump-mode-map (kbd "C-M-g") nil)
@@ -15,7 +20,10 @@
     (with-eval-after-load 'enh-ruby-mode (init-dumb-jump--setup-enh-ruby-mode)))
 
   (if (boundp 'ruby-mode-map) (init-dumb-jump--setup-ruby-mode)
-    (with-eval-after-load 'ruby-mode (init-dumb-jump--setup-ruby-mode))))
+    (with-eval-after-load 'ruby-mode (init-dumb-jump--setup-ruby-mode)))
+
+  (if (boundp 'protobuf-mode-map) (init-dumb-jump--setup-protobuf-mode)
+    (with-eval-after-load 'protobuf-mode (init-dumb-jump--setup-protobuf-mode))))
 
 (defun init-dumb-jump--setup-c-mode ()
   (define-key c-mode-map (kbd "C-c C-j") 'init-dumb-jump--go))
@@ -25,6 +33,9 @@
 
 (defun init-dumb-jump--setup-ruby-mode ()
   (define-key ruby-mode-map (kbd "C-c C-j") 'init-dumb-jump--go))
+
+(defun init-dumb-jump--setup-protobuf-mode ()
+  (define-key protobuf-mode-map (kbd "C-c C-j") 'init-dumb-jump--go))
 
 (defun init-dumb-jump--go ()
   (interactive)

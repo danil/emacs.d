@@ -24,8 +24,8 @@ See `projectile-register-project-type'."
 (define-minor-mode init-projectile-mode "init-projectile" nil init-projectile-mode-lighter init-projectile-mode-map
   (init-projectile-setup))
 
-(defun init-projectile-mode-on () "Turn `init-projectile-mode' on." (init-projectile-mode +1))
-(defun init-projectile-mode-off () "Turn `init-projectile-mode' off." (init-projectile-mode -1))
+(defun init-projectile-mode-on () (init-projectile-mode +1))
+(defun init-projectile-mode-off () (init-projectile-mode -1))
 
 (defun init-projectile ()
   (dolist (hook init-projectile-mode-hooks)
@@ -40,6 +40,11 @@ See `projectile-register-project-type'."
 
   (let ((map init-projectile-mode-map)
         (prfx init-projectile-mode-prefix))
-    (define-key map (kbd prfx) projectile-command-map)))
+    (define-key map (kbd prfx) projectile-command-map))
+
+  ;; Projectile "make" type conflicts with "go" type.
+  ;; FIXME: Absence of the "make" type.
+  (setq projectile-project-types
+        (cl-delete-if (lambda (type) (equal (car type) 'make)) projectile-project-types)))
 
 (provide 'init-projectile)

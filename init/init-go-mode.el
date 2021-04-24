@@ -272,6 +272,7 @@ See `init-go-mode-bindings'.")
                             "\tbreak"
                             "\tcontinue"
                             "\tdefer"
+                            "\tdelete"
                             "\tgo"
                             "\tgoto"
                             "\treturn"

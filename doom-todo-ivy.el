@@ -32,19 +32,19 @@
           (cl-loop for todo in doom/ivy-todo-tags maximize (length (car todo))))
          (max-desc-width
           (cl-loop for todo in todos maximize (length (cl-cdadr todo))))
-         (max-width (max (- (frame-width) (1+ max-type-width) max-desc-width)
+         (max-width (max (+ max-desc-width 3)
                          25)))
     (cl-loop
-     with fmt = (format "%%-%ds %%-%ds%%s%%s:%%s" max-type-width max-width)
+     with fmt = (format "%%-%ds %%-%ds%%s:%%s" max-type-width max-width)
      for alist in todos
      collect
      (let-alist alist
-       (format fmt
-               (propertize .type 'face (cdr (assoc .type doom/ivy-todo-tags)))
-               (substring .desc 0 (min max-desc-width (length .desc)))
-               (propertize " | " 'face 'font-lock-comment-face)
-               (propertize (abbreviate-file-name .file) 'face 'font-lock-keyword-face)
-               (propertize .line 'face 'font-lock-constant-face))))))
+       (list (format fmt
+                     (propertize .type 'face (cdr (assoc .type doom/ivy-todo-tags)))
+                     (substring .desc 0 (min max-desc-width (length .desc)))
+                     (propertize (abbreviate-file-name .file) 'face 'font-lock-keyword-face)
+                     (propertize .line 'face 'font-lock-constant-face))
+             .type .file .line)))))
 
 (defun doom/ivy--todos (target)
   "Search TARGET for a list of todos."
@@ -84,16 +84,14 @@
 
 (defun doom/ivy--todos-open-action (x)
   "Jump to the file X and line of the current todo."
-  (let ((location (cadr (split-string x " | ")))
-        (type (car (split-string x " "))))
-    (cl-destructuring-bind (file line) (split-string location ":")
-      (with-ivy-window
-        (find-file (expand-file-name file (projectile-project-root)))
-        (goto-char (point-min))
-        (forward-line (1- (string-to-number line)))
-        (search-forward type (line-end-position) t)
-        (backward-char (length type))
-        (recenter)))))
+  (cl-destructuring-bind (label type file line) x
+    (with-ivy-window
+      (find-file (expand-file-name file (projectile-project-root)))
+      (goto-char (point-min))
+      (forward-line (1- (string-to-number line)))
+      (when (search-forward type (line-end-position) t)
+        (backward-char (length type)))
+      (recenter))))
 
 ;;;###autoload
 (defun doom/ivy-todos (&optional arg)

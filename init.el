@@ -193,9 +193,12 @@ Cancels itself, if this buffer was killed."
 
 (message "Initializing highlight-symbol") (require 'init-highlight-symbol "init-highlight-symbol") (add-hook 'after-init-hook 'init-highlight-symbol)
 
+(message "Initializing make-mode") (require 'init-make-mode "init-make-mode") (add-hook 'after-init-hook 'init-global-make-mode-on)
+
 ;; Projectile.
 (message "Initializing projectile") (require 'init-projectile "init-projectile") (add-hook 'after-init-hook 'init-projectile)
 (message "Initializing projectile-rails") (require 'init-projectile-rails "init-projectile-rails") (add-hook 'after-init-hook 'init-projectile-rails)
+
 
 (message "Initializing simple") (require 'init-simple "init-simple") (add-hook 'after-init-hook 'init-simple) (add-hook 'after-init-hook 'init-global-simple-mode)
 
@@ -248,12 +251,11 @@ Cancels itself, if this buffer was killed."
 ;; (autoload 'doom-modeline-set-modeline (concat user-emacs-directory "doom-modeline.el") nil t)
 
 ;; doom todo ivy.a
-(autoload 'doom-todo-ivy (concat user-emacs-directory "doom-todo-ivy.el") nil t)
+(autoload 'doom/ivy-todos (concat user-emacs-directory "doom-todo-ivy") nil t)
 ;; (let ((f (concat user-emacs-directory "doom-todo-ivy.el")))
 ;;   (if (file-readable-p f)
 ;;       (require 'doom-todo-ivy f)
 ;;     (display-warning :doom-todo-ivy.el (format "Doom Emacs TODO ivy not found: %s" f))))
-(nox-recipe '(doom-todo-ivy))
 
 ;; (nox-recipe '(iedit)) ;isearch + edit is an a-la multiple-cursors-mode
 (nox-recipe '(ibuffer))
@@ -288,7 +290,6 @@ Cancels itself, if this buffer was killed."
 (nox-recipe '(markdown-toc))
 (nox-recipe '(markdownfmt))
 
-(nox-recipe '(make-mode))
 (nox-recipe '(mediawiki))
 (nox-recipe '(menu-bar))
 (nox-recipe '(mouse))

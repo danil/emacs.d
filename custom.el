@@ -30,20 +30,20 @@
      company-semantic company-clang company-cmake company-files
      (company-dabbrev-code company-gtags company-etags company-keywords)
      company-dabbrev company-abbrev company-oddmuse company-capf)) ;; company.el
- ;; '(company-clang-executable (executable-find "clang")) ;; company-clang.el
- '(company-dabbrev-code-everywhere t) ;; company-dabbrev-code.el
- '(company-dabbrev-minimum-length 1) ;; company-dabbrev.el
  ;; '(company-abort-manual-when-too-short nil) ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
+ ;; '(company-clang-executable (executable-find "clang")) ;; company-clang.el
  ;; '(company-global-modes t) ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
+ ;; '(company-lighter-base "company") ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
  ;; '(company-show-numbers nil) ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
+ ;; '(company-tooltip-idle-delay nil) ;; company.el: .5 <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
  ;; '(company-tooltip-limit 10) ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
  ;; '(company-tooltip-margin 1) ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
  ;; '(company-tooltip-maximum-width most-positive-fixnum) ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
  ;; '(company-tooltip-minimum 6) ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
  ;; '(company-tooltip-minimum-width 0) ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
  ;; '(company-tooltip-offset-display 'scrollbar) ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
- ;; '(company-lighter-base "company") ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
- ;; '(company-tooltip-idle-delay nil) ;; company.el: .5 <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
+ '(company-dabbrev-code-everywhere t) ;; company-dabbrev-code.el
+ '(company-dabbrev-minimum-length 1) ;; company-dabbrev.el
  '(company-frontends nil) ;; company.el: nil '() <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
  '(company-idle-delay nil) ;; company.el: 0.7 tradeoff between typing speed and performance <https://emacs.stackexchange.com/questions/32467/how-can-i-configure-company-mode-to-only-display-candidates-after-an-explicit-ke#32523>, <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
  '(company-minimum-prefix-length 0) ;; company.el: <https://github.com/gorakhargosh/emacs.d/blob/master/config-completion.el>
@@ -133,6 +133,7 @@
                                 yaml-yamllint ; i use a yaml-javascript linter
                                 )) ;; flycheck.el
  '(flycheck-idle-change-delay 1.5) ;; flycheck.el
+ '(flycheck-indication-mode nil)
  '(flycheck-markdown-markdownlint-cli-config "~/.markdownlint.json") ;; flycheck.el
  '(flycheck-mode-line-prefix "F") ;; flycheck.el
  '(gofmt-command "goimports") ;; go-mode.el: The 'gofmt' command. Some users may replace this with 'goimports'from https://github.com/bradfitz/goimports.
@@ -157,7 +158,11 @@
  ;; '(ivy-fixed-height-minibuffer t) ;; ivy.el
  ;; '(ivy-height 11) ;; ivy.el
  '(init-anzu-mode-map-exec-prefix init-exec-key-prefix) ;; init-anzu.el
- '(init-back-button-mode-bindings '(("C-v j j" . back-button-local-backward) ("C-v j k" . back-button-local-forward) ("C-v j J" . back-button-global-backward) ("C-v j K" . back-button-global-forward))) ;; init-back-button.el
+ '(init-back-button-mode-bindings
+   '(("C-v j j" . back-button-local-backward)
+     ("C-v j k" . back-button-local-forward)
+     ("C-v j J" . back-button-global-backward)
+     ("C-v j K" . back-button-global-forward))) ;; init-back-button.el
  '(init-browse-url-mode-map-exec-prefix init-exec-key-prefix)
  '(init-bytecomp-mode-map-prefix init-exec-key-prefix)
  '(init-c-mode-patterns '("/etc/portage/savedconfig/www-servers/quark" "/etc/portage/savedconfig/x11-misc/dmenu" "/etc/portage/savedconfig/x11-misc/slstatus" "/etc/portage/savedconfig/x11-misc/tabbed" "/etc/portage/savedconfig/x11-terms/st" "/etc/portage/savedconfig/x11-wm/dwm")) ;; init-cc-mode.el
@@ -259,14 +264,14 @@
  '(init-counsel-mode-map-prefix init-key-prefix) ;; init-counsel.el
  '(init-crontab-mode-patterns '("/etc/cron.d/" "crontab\\'")) ;; init-crontab-mode.el
  '(init-cycle-quotes-mode-map-prefix init-key-prefix) ;; init-cycle-quotes.el
- '(init-dart-mode-bindings '()) ;; init-dart-mode.el
+ '(init-dart-mode-bindings 'nil) ;; init-dart-mode.el
  '(init-deft-mode-map-exec-prefix init-exec-key-prefix) ;; init-deft.el
  '(init-desktop-mode-map-prefix init-key-prefix) ;; init-desktop.el
  '(init-digit-groups-mode-hooks (append init-programming-modes-hooks '(shell-mode-hook)))
  '(init-dired-details-key "b")
  '(init-emacs-lisp-mode-map-prefix init-key-prefix)
  '(init-emacs-lisp-mode-patterns '("/\\.?abbrev_defs\\'" "/\\.emacs\\.d/bookmarks\\'" "/ac-comphist\\.dat\\'" "\\.el\\.\\(tpl\\|template\\)\\'")) ;; init-emacs-lisp-mode.el
- '(init-ethan-wspace-disallows-eol-modes '(autoconf-mode awk-mode c-mode cask-mode change-log-mode clojure-mode coffee-mode conf-colon-mode conf-mode conf-space-mode conf-unix-mode conf-xdefaults-mode crontab-mode csharp-mode css-mode dockerfile-mode ebuild-mode emacs-lisp-mode ferm-mode fish-mode git-commit-mode gitconfig-mode gitignore-mode go-mode haml-mode haskell-mode html-mode inf-mongo-mode jade-mode java-mode js-mode js2-mode json-mode less-css-mode lisp-mode litcoffee-mode lua-mode makefile-gmake-mode mediawiki-mode nginx-mode nodejs-repl-mode nroff-mode nxml-mode org-mode pascal-mode perl-mode php-mode python-mode restclient-mode rhtml-mode ruby-mode rust-mode sass-mode sed-mode sgml-mode sh-mode sieve-mode slim-mode sql-mode systemd-mode text-mode toml-mode web-mode xml-mode yaml-mode)) ;; init-ethan-wspace.el
+ '(init-ethan-wspace-disallows-eol-modes '(autoconf-mode awk-mode c-mode cask-mode change-log-mode clojure-mode coffee-mode conf-colon-mode conf-mode conf-space-mode conf-unix-mode conf-xdefaults-mode crontab-mode csharp-mode css-mode dockerfile-mode ebuild-mode emacs-lisp-mode ferm-mode fish-mode git-commit-mode gitconfig-mode gitignore-mode go-mode go-template-mode haml-mode haskell-mode html-mode inf-mongo-mode jade-mode java-mode js-mode js2-mode json-mode less-css-mode lisp-mode litcoffee-mode lua-mode makefile-gmake-mode mediawiki-mode nginx-mode nodejs-repl-mode nroff-mode nxml-mode org-mode pascal-mode perl-mode php-mode python-mode restclient-mode rhtml-mode ruby-mode rust-mode sass-mode sed-mode sgml-mode sh-mode sieve-mode slim-mode sql-mode systemd-mode text-mode toml-mode web-mode xml-mode yaml-mode)) ;; init-ethan-wspace.el
  '(init-ethan-wspace-disallows-many-nls-eof-modes init-programming-modes) ;; init-ethan-wspace.el
  '(init-ethan-wspace-disallows-no-nl-eof-modes init-programming-modes) ;; init-ethan-wspace.el
  '(init-ethan-wspace-disallows-tabs-modes '(autoconf-mode awk-mode cask-mode change-log-mode clojure-mode coffee-mode conf-colon-mode conf-mode conf-space-mode conf-unix-mode conf-xdefaults-mode csharp-mode css-mode dockerfile-mode emacs-lisp-mode ferm-mode fish-mode git-commit-mode gitconfig-mode gitignore-mode haml-mode haskell-mode html-mode inf-mongo-mode jade-mode java-mode js-mode js2-mode json-mode less-css-mode lisp-mode litcoffee-mode lua-mode markdown-mode mediawiki-mode nginx-mode nodejs-repl-mode nroff-mode nxml-mode org-mode pascal-mode perl-mode php-mode python-mode restclient-mode rhtml-mode ruby-mode rust-mode sass-mode sed-mode sgml-mode sh-mode sieve-mode slim-mode sql-mode systemd-mode text-mode toml-mode web-mode xml-mode yaml-mode)) ;; init-ethan-wspace.el
@@ -280,11 +285,23 @@
  '(init-find-temp-file-mode-extension-functions '(("go" . init-find-temp-file-go))) ;; init-find-temp-file-mode.el
  '(init-fringe-mode-map-exec-prefix init-exec-key-prefix) ;; init-fringe.el
  '(init-fundamental-mode-patterns '("/\\.bash_history\\'")) ;; init-simple.el
- '(init-go-mode-bindings '(("C-c C-f e" . init-go-mode-end-of-defun) ("C-c C-k" . xref-pop-marker-stack) ("M-." . godef-jump) ("C-v ? ? f" . godoc-at-point))) ;; init-go-mode.el
- '(init-highlight-symbol-bindings '(("C-v c S c" . highlight-symbol-count) ("C-v c s" . highlight-symbol-query-replace))) ;; init-highlight-symbol.el
- '(init-highlight-symbol-mode-hooks (append init-programming-modes-hooks '(dired-mode-hook ivy-occur-grep-mode-hook shell-mode-hook sql-interactive-mode-hook))) ;; init-highlight-symbol.el
- '(init-make-gmake-mode-patterns '("/Makefile.port\\'" "/Makefile.shlib\\'" "/etc/portage/savedconfig/x11-misc/slock")) ;; init-make-mode.el
- '(init-projectile-mode-hooks (append init-programming-modes-hooks '(compilation-mode-hook dired-mode-hook go-test-mode-hook ivy-occur-grep-mode-hook magit-diff-mode-hook magit-process-mode-hook magit-revision-mode-hook magit-stash-mode-hook magit-status-mode-hook protobuf-mode-hook shell-mode-hook sql-interactive-mode-hook))) ;; init-projectile.el
+ '(init-go-mode-bindings
+   '(("C-c C-f e" . init-go-mode-end-of-defun)
+     ("C-c C-k" . xref-pop-marker-stack)
+     ("M-." . godef-jump)
+     ("C-v ? ? f" . godoc-at-point))) ;; init-go-mode.el
+ '(init-go-template-mode-patterns '("\\.tmpl\\'"))
+ '(init-highlight-symbol-bindings
+   '(("C-v c S c" . highlight-symbol-count)
+     ("C-v c s" . highlight-symbol-query-replace))) ;; init-highlight-symbol.el
+ '(init-highlight-symbol-mode-hooks
+   (append init-programming-modes-hooks
+           '(dired-mode-hook ivy-occur-grep-mode-hook shell-mode-hook sql-interactive-mode-hook))) ;; init-highlight-symbol.el
+ '(init-make-gmake-mode-patterns
+   '("/Makefile.port\\'" "/Makefile.shlib\\'" "/etc/portage/savedconfig/x11-misc/slock")) ;; init-make-mode.el
+ '(init-projectile-mode-hooks
+   (append init-programming-modes-hooks
+           '(compilation-mode-hook dired-mode-hook go-test-mode-hook ivy-occur-grep-mode-hook magit-diff-mode-hook magit-process-mode-hook magit-revision-mode-hook magit-stash-mode-hook magit-status-mode-hook protobuf-mode-hook shell-mode-hook sql-interactive-mode-hook))) ;; init-projectile.el
  '(init-projectile-project-root-files '("go.mod"))
  '(init-rainbow-identifiers-hooks
    '((c-mode-common-hook init-c-mode-rainbow-identifiers-setup)
@@ -303,6 +320,7 @@
      (ferm-mode-hook init-ferm-mode-rainbow-identifiers-setup)
      (go-dot-mod-mode-hook init-go-dot-mod-mode-rainbow-identifiers-setup)
      (go-mode-hook init-go-mode-rainbow-identifiers-setup)
+     (go-template-mode-hook init-go-template-mode-rainbow-identifiers-setup)
      (haproxy-mode-hook init-haproxy-mode-rainbow-identifiers-setup)
      (hcl-mode-hook init-hcl-mode-rainbow-identifiers-setup)
      (js2-parse-finished-hook init-js2-mode-rainbow-identifiers-setup)
@@ -325,8 +343,12 @@
      (typescript-mode-hook init-typescript-mode-rainbow-identifiers-setup)
      (web-mode-hook init-web-mode-rainbow-identifiers-setup)
      (yaml-mode-hook init-yaml-mode-rainbow-identifiers-setup))) ;; init-rainbow-identifiers.el
- '(init-rainbow-mode-hooks '(css-mode-hook i3wm-config-mode-hook less-css-mode-hook nxml-mode-hook php-mode-hook sass-mode-hook scss-mode-hook web-mode-hook xml-mode-hook)) ;; init-rainbow-mode.el
- '(init-simple-bindings '(("M-y" . init-simple-yank-pop) ("C-v r c" . count-words-region) ("C-v l t" . toggle-truncate-lines))) ;; init-simple.el
+ '(init-rainbow-mode-hooks
+   '(css-mode-hook i3wm-config-mode-hook less-css-mode-hook nxml-mode-hook php-mode-hook sass-mode-hook scss-mode-hook web-mode-hook xml-mode-hook)) ;; init-rainbow-mode.el
+ '(init-simple-bindings
+   '(("M-y" . init-simple-yank-pop)
+     ("C-v r c" . count-words-region)
+     ("C-v l t" . toggle-truncate-lines))) ;; init-simple.el
  '(init-simple-yank-pop-function 'init-selectrum-yank-pop) ;; init-simple.el
  '(init-wdired-map-exec-prefix init-exec-key-prefix) ;; init-wdired.el
  '(init-window-numbering-mode-map-prefix init-key-prefix) ;; init-window-numbering.el
@@ -440,7 +462,29 @@
  '(noxrcp-ruby-mode-patterns
    '("/Capfile\\'" "/Gemfile\\'" "/Guardfile\\.private.example\\'" "/Guardfile\\.private\\'" "/Guardfile\\'" "/[rR]akefile\\'" "/[vV]agrantfile.proxy\\'" "/[vV]agrantfile\\'" "\\.atex\\'" "\\.gemspec\\'" "\\.irbrc\\'" "\\.mdlrc\\'" "\\.prawn\\'" "\\.rake\\'" "\\.rb\\.erb\\'" "\\.thor\\'" "\\.yml\\.erb\\'"))
  '(noxrcp-sh-mode-patterns
-   '("/Procfile\\'" "/\\.ackrc\\'" "/\\.bash_aliases\\'" "/\\.bpkgrc\\'" "/\\.env\\(\\.development\\|.production\\)?\\(\\.example\\)?\\'" "/\\.lessfilter\\'" "/\\.mkshrc\\'" "/\\.xprofile\\'" "/dwmrc\\'" "/etc/profile\\'" "\\.bashrc\\'" "/apt/.+\\.list\\(\\.save\\)?\\'" "/etc/init.d/" "/etc/local.d/.+\\.\\(start\\|stop\\)"))
+   '(
+     "/Procfile\\'"
+     "/\\.ackrc\\'"
+     "/\\.bash_aliases\\'"
+     "/\\.bpkgrc\\'"
+     "/\\.env\\(\\.development\\|\\.production\\)?\\(\\.example\\)?\\'"
+     "/\\.lessfilter\\'"
+     "/\\.mkshrc\\'"
+     "/\\.xprofile\\'"
+     "/dwmrc\\'"
+     "/etc/profile\\'"
+     "\\.bashrc\\'"
+
+     ;; Ubuntu.
+     "/apt/.+\\.list\\(\\.save\\)?\\'"
+
+     ;; Gentoo.
+     "/etc/init.d/"
+     "/etc/local.d/.+\\.\\(start\\|stop\\)"
+
+     ;; Emacs shellcheck config.
+     "/\\.shellcheckrc\\'"
+     ))
  '(noxrcp-sql-mode-patterns '("/Dropbox/deft/sql/.*\\.sql\\.md\\'"))
  '(noxrcp-systemd--rainbow-identifiers-stop-words 'nil)
  '(noxrcp-systemd-patterns 'nil)
@@ -470,7 +514,7 @@
  '(recentf-max-menu-items 500) ;; init-recentf.el
  '(recentf-max-saved-items nil)
  '(recentf-save-file "~/.emacs.var/recentf")
- '(rm-text-properties '()) ;; rich-minority.el
+ '(rm-text-properties 'nil) ;; rich-minority.el
  '(rm-whitelist " F") ;; rich-minority.el
  '(rspec-use-spring-when-possible nil)
  '(ruby-encoding-magic-comment-style 'ruby)
@@ -525,10 +569,13 @@
                     (((class color) (min-colors 88) (background dark)) :background "gray35"))) ;; column-marker.el
  '(ctrlf-highlight-active ((t :background "brightwhite" :foreground "brightred"))) ;; ctrlf.el
  '(diff-added ((((class color) (min-colors 88) (background dark)) :foreground "brightgreen"))) ;; diff-mode.el
- '(diff-removed ((((class color) (min-colors 88) (background dark)) :foreground "brightred"))) ;; diff-mode.el
  '(diff-changed ((((class color) (min-colors 88) (background dark)) :foreground "brightblue"))) ;; diff-mode.el
- '(ediff-even-diff-A-line ((((class color) (min-colors 88) (background dark)) (:background "color-236")))) ;; ediff-init.el
+ '(diff-removed ((((class color) (min-colors 88) (background dark)) :foreground "brightred"))) ;; diff-mode.el
+ '(ediff-current-diff-A ((((class color) (min-colors 88) (background dark)) (:foreground nil)))) ;; ediff-init.el
+ '(ediff-current-diff-B ((((class color) (min-colors 88) (background dark)) (:foreground nil)))) ;; ediff-init.el
+ '(ediff-current-diff-C ((((class color) (min-colors 88) (background dark)) (:foreground nil)))) ;; ediff-init.el
  '(ediff-even-diff-A ((((class color) (min-colors 88) (background dark)) (:background "color-236")))) ;; ediff-init.el
+ '(ediff-even-diff-A-line ((((class color) (min-colors 88) (background dark)) (:background "color-236")))) ;; ediff-init.el
  '(ediff-even-diff-Ancestor ((((class color) (min-colors 88) (background dark)) (:background "color-235")))) ;; ediff-init.el
  '(ediff-even-diff-B ((((class color) (min-colors 88) (background dark)) (:background "color-237")))) ;; ediff-init.el
  '(ediff-even-diff-C ((((class color) (min-colors 88) (background dark)) (:background "color-238")))) ;; ediff-init.el
@@ -536,12 +583,6 @@
  '(ediff-odd-diff-Ancestor ((((class color) (min-colors 88) (background dark)) (:background "color-239")))) ;; ediff-init.el
  '(ediff-odd-diff-B ((((class color) (min-colors 88) (background dark)) (:background "color-241")))) ;; ediff-init.el
  '(ediff-odd-diff-C ((((class color) (min-colors 88) (background dark)) (:background "color-242")))) ;; ediff-init.el
- '(ediff-current-diff-A ((((class color) (min-colors 88) (background dark)) (:foreground nil)))) ;; ediff-init.el
- '(ediff-current-diff-B ((((class color) (min-colors 88) (background dark)) (:foreground nil)))) ;; ediff-init.el
- '(ediff-current-diff-C ((((class color) (min-colors 88) (background dark)) (:foreground nil)))) ;; ediff-init.el
- '(ediff-current-diff-A ((((class color) (min-colors 88) (background dark)) (:background "color-52")))) ;; ediff-init.el: DarkRed
- '(ediff-current-diff-B ((((class color) (min-colors 88) (background dark)) (:background "color-22")))) ;; ediff-init.el: DarkGreen
- '(ediff-current-diff-C ((((class color) (min-colors 88) (background dark)) (:background "DarkOrange4")))) ;; ediff-init.el
  '(ethan-wspace-face ((((class color) (min-colors 88) (background dark)) (:background "gray15")))) ;; ethan-wspace.el
  '(highlight-symbol-face ((t (:inherit highlight)))) ;; highlight-symbol.el
  '(init-alert ((((background light)) :foreground "green" :background "red" :weight bold) (((background dark)) :foreground "green" :background "red" :weight bold))) ;; init-faces.el
@@ -565,8 +606,10 @@
  '(rainbow-delimiters-depth-8-face ((((class color) (min-colors 88) (background dark)) :foreground "sienna1"))) ;; rainbow-delimiters.el
  '(scroll-bar ((((class color) (min-colors 88) (background dark)) (:background "white" :foreground "gray"))))
  '(selectrum-current-candidate ((t :inverse-video t))) ;; selectrum.el
- '(selectrum-primary-highlight ((t :background "red"))) ;; selectrum.el
- '(selectrum-secondary-highlight ((t :background "blue"))) ;; selectrum.el
+ '(selectrum-prescient-primary-highlight ((t :background "red"))) ;; selectrum.el
+ '(selectrum-prescient-secondary-highlight ((t :background "blue"))) ;; selectrum.el
+ '(selectrum-primary-highlight ((t :background "red")) t)
+ '(selectrum-secondary-highlight ((t :background "blue")) t)
  '(sml/git ((t :inherit (sml/not-modified sml/prefix)))) ;; smart-mode-line.el
  '(sml/global ((t (:foreground "gray60" :inverse-video nil)))) ;; smart-mode-line.el
  '(sml/line-number ((t (:foreground "brightwhite" :weight normal)))) ;; smart-mode-line.el

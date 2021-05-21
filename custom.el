@@ -571,9 +571,9 @@
  '(diff-added ((((class color) (min-colors 88) (background dark)) :foreground "brightgreen"))) ;; diff-mode.el
  '(diff-changed ((((class color) (min-colors 88) (background dark)) :foreground "brightblue"))) ;; diff-mode.el
  '(diff-removed ((((class color) (min-colors 88) (background dark)) :foreground "brightred"))) ;; diff-mode.el
- '(ediff-current-diff-A ((((class color) (min-colors 88) (background dark)) (:foreground nil)))) ;; ediff-init.el
- '(ediff-current-diff-B ((((class color) (min-colors 88) (background dark)) (:foreground nil)))) ;; ediff-init.el
- '(ediff-current-diff-C ((((class color) (min-colors 88) (background dark)) (:foreground nil)))) ;; ediff-init.el
+ '(ediff-current-diff-A ((((class color) (min-colors 88) (background dark)) (:background "color-52")))) ;; ediff-init.el: DarkRed
+ '(ediff-current-diff-B ((((class color) (min-colors 88) (background dark)) (:background "color-22")))) ;; ediff-init.el: DarkGreen
+ '(ediff-current-diff-C ((((class color) (min-colors 88) (background dark)) (:background "DarkOrange4")))) ;; ediff-init.el
  '(ediff-even-diff-A ((((class color) (min-colors 88) (background dark)) (:background "color-236")))) ;; ediff-init.el
  '(ediff-even-diff-A-line ((((class color) (min-colors 88) (background dark)) (:background "color-236")))) ;; ediff-init.el
  '(ediff-even-diff-Ancestor ((((class color) (min-colors 88) (background dark)) (:background "color-235")))) ;; ediff-init.el

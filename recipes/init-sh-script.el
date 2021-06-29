@@ -35,30 +35,6 @@
   "Regexp patterns associated with `sh-mode'."
   :group 'noxinit)
 
-(custom-set-variables
- '(noxrcp-sh-mode-patterns
-   '(
-     "/Procfile\\'"
-     "/\\.ackrc\\'"
-     "/\\.bash_aliases\\'"
-     "/\\.bpkgrc\\'"
-     "/\\.env\\(\\.development\\|\.production\\)?\\(\\.example\\)?\\'"
-     "/\\.lessfilter\\'"
-     "/\\.mkshrc\\'"
-     "/\\.xprofile\\'"
-     "/dwmrc\\'"
-     "/etc/profile\\'"
-     "\\.bashrc\\'"
-
-     ;; Ubuntu.
-     "/apt/.+\\.list\\(\\.save\\)?\\'"
-
-     ;; Gentoo.
-     "/etc/init.d/"
-     "/etc/local.d/.+\\.\\(start\\|stop\\)"
-     )))
-
-
 (add-hook 'after-init-hook 'noxrcp-sh-script)
 (defun noxrcp-sh-script ()
   "No X recipe init."

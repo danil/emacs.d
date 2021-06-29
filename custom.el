@@ -467,7 +467,7 @@
      "/\\.ackrc\\'"
      "/\\.bash_aliases\\'"
      "/\\.bpkgrc\\'"
-     "/\\.env\\(\\.development\\|\\.production\\)?\\(\\.example\\)?\\'"
+     "/\\.env\\(\\.development\\|\\.production\\|.local\\|.test\\)?\\(\\.example\\)?\\'"
      "/\\.lessfilter\\'"
      "/\\.mkshrc\\'"
      "/\\.xprofile\\'"

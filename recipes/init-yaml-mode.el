@@ -35,15 +35,6 @@
   "Regexp patterns associated with `yaml-mode'."
   :group 'noxinit)
 
-(custom-set-variables
- '(noxrcp-yaml-mode-patterns
-   '(
-     "/\\(group\\|host\\)_vars/[^.]*\\'"
-     "/\\.kube/[^/.]*\\'"
-     "\\.ya?ml\\(\\.example\\|\\.sample\\)?\\'"
-     "\\.yml\\.j2\\'"
-     )))
-
 (add-hook 'after-init-hook 'noxrcp-yaml-mode)
 (defun noxrcp-yaml-mode ()
   "No X recipe init."

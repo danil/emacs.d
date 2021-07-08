@@ -493,7 +493,12 @@
  '(noxrcp-web-mode-patterns
    '("/src/vendor/narus/narus-web/.+\\.jsx?\\'" "\\.\\(html\\|text\\)\\.erb\\'" "\\.as[cp]x\\'" "\\.djhtml\\'" "\\.ejs\\'" "\\.html\\'" "\\.js.erb\\'" "\\.jsp\\'" "\\.jst\\.ejs\\'" "\\.jsx\\'" "\\.phtml\\'" "\\.rhtml\\'" "\\.tpl\\.php\\'"))
  '(noxrcp-yaml-mode-patterns
-   '("/\\(group\\|host\\)_vars/[^.]*\\'" "/\\.kube/[^/.]*\\'" "\\.ya?ml\\(\\.example\\|\\.sample\\)?\\'" "\\.yml\\.j2\\'"))
+   '(
+     "/\\(group\\|host\\)_vars/[^.]*\\'"
+     "/\\.kube/[^/.]*\\'"
+     "\\.ya?ml\\(\\.example\\|\\.sample\\|.ci\\)?\\'"
+     "\\.yml\\.j2\\'"
+     ))
  '(pack-dired-default-extension ".tar.xz") ;; pack.el
  '(pack-program-alist
    '(("\\.7z\\'" :pack "7z a" :unpack "7z x")
